@@ -1,0 +1,41 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "utilisateurId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "nom",
+      "javadoc": "The firstname attribute.",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "prenom",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "dateDeNaisasnce",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "changelogDate": "20160805224138",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "entityTableName": "utilisateur"
+}
