@@ -5,10 +5,10 @@
 			UtilisateurController);
 
 	UtilisateurController.$inject = [ '$scope', '$state', 'Utilisateur',
-			'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants' ];
+			'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants','ModificationUtilisateur','$window' ];
 
 	function UtilisateurController($scope, $state, Utilisateur, ParseLinks,
-			AlertService, pagingParams, paginationConstants) {
+			AlertService, pagingParams, paginationConstants, ModificationUtilisateur,$window) {
 		var vm = this;
 
 		vm.loadPage = loadPage;
@@ -88,8 +88,20 @@
 			console.log(index, "removed");
 		}
 		
+		function onSaveSuccess (result) {
+			console.log(result);
+            vm.isSaving = false;
+        }
+
+        function onSaveError () {
+            vm.isSaving = false;
+        }
+		
 		function save(){
+			ModificationUtilisateur.update(vm.utilisateurs);
+			AlertService.success("Modifications enregistrées");
 			console.log("modification saved");
+			$window.location.reload();
 		}
 	}
 })();

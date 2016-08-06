@@ -1,6 +1,8 @@
 package com.dev.myapp.web.rest.dto;
 
 public class UtilisateurDTO {
+	
+	
 	private String nom;
 
 	private String prenom;
@@ -8,6 +10,8 @@ public class UtilisateurDTO {
 	private boolean added;
 
 	private boolean removed;
+	
+	private Long id;
 
 	/**
 	 * @return the nom
@@ -68,6 +72,22 @@ public class UtilisateurDTO {
 	public void setRemoved(boolean removed) {
 		this.removed = removed;
 	}
+	
+	
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -77,7 +97,7 @@ public class UtilisateurDTO {
 	@Override
 	public String toString() {
 		return "UtilisateurDTO{nom:'" + nom + "\' prenom:'" + prenom + "\' added:'" + added + "\' removed:'" + removed
-				+ "\'}";
+				+ "\' id:'"+id+"\'}";
 	}
 
 }

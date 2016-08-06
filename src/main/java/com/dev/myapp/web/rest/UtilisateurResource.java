@@ -6,6 +6,8 @@ import com.dev.myapp.service.UtilisateurService;
 import com.dev.myapp.web.rest.util.HeaderUtil;
 import com.dev.myapp.web.rest.util.PaginationUtil;
 import com.dev.myapp.web.rest.dto.UtilisateurDTO;
+import com.dev.myapp.web.rest.errors.CustomParameterizedException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -137,9 +139,10 @@ public class UtilisateurResource {
     }
     
     
-    @RequestMapping(value = "/sendItems", method = RequestMethod.POST)
-    public String saveMofifications(@RequestBody ArrayList<UtilisateurDTO> items) {
-       
-       return "Success";
+    @RequestMapping(value = "/sendItems", method = RequestMethod.PUT,produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity saveMofifications(@RequestBody ArrayList<UtilisateurDTO> items) {
+       utilisateurService.saveModifications(items);
+       return new ResponseEntity(HttpStatus.OK);
     }
 }

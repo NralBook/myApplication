@@ -2,6 +2,8 @@ package com.dev.myapp.service;
 
 import com.dev.myapp.domain.Utilisateur;
 import com.dev.myapp.repository.UtilisateurRepository;
+import com.dev.myapp.web.rest.dto.UtilisateurDTO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -10,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,4 +75,20 @@ public class UtilisateurService {
         log.debug("Request to delete Utilisateur : {}", id);
         utilisateurRepository.delete(id);
     }
+
+	public void saveModifications(ArrayList<UtilisateurDTO> users) {
+		
+		for(UtilisateurDTO user : users){
+			if(user.isAdded()==false && user.isRemoved()==true){
+				delete(user.getId());
+			}
+			if(user.isAdded()==true && user.isRemoved()==false){
+				Utilisateur userAdd = new Utilisateur();
+				userAdd.setNom(user.getNom());
+				userAdd.setPrenom(user.getPrenom());
+				save(userAdd);
+			}
+		}
+		
+	}
 }
